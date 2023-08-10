@@ -1,33 +1,33 @@
 package org.apache.shenyu.plugin.wasm.handler;
 
 import org.apache.shenyu.common.dto.MetaData;
-import org.apache.shenyu.common.enums.RpcTypeEnum;
-import org.apache.shenyu.plugin.base.cache.MetaDataCache;
-import org.apache.shenyu.plugin.base.handler.MetaDataHandler;
+import org.apache.shenyu.plugin.rpcx.cache.RpcxConfigCache;
+import org.apache.shenyu.plugin.rpcx.handler.RpcxMetaDataHandler;
+
+import java.util.Objects;
 
 /**
  *
  */
-public class WasmMetaDataHandler implements MetaDataHandler {
+public class WasmMetaDataHandler extends RpcxMetaDataHandler {
+
     @Override
-    public void handle(final MetaData metaData) {
-        // the update is also need to clean, but there is no way to
-        // distinguish between crate and update, so it is always clean
-        MetaDataCache.getInstance().clean();
+    protected boolean isInitialized(final MetaData metaData) {
+        return Objects.nonNull(RpcxConfigCache.getInstance().get(metaData.getPath()));
     }
 
     @Override
-    public void remove(final MetaData metaData) {
-        MetaDataCache.getInstance().clean();
+    protected void initReference(final MetaData metaData) {
+        RpcxConfigCache.getInstance().initRef(metaData);
     }
 
     @Override
-    public void refresh() {
-        MetaDataCache.getInstance().clean();
+    protected void updateReference(final MetaData metaData) {
+        RpcxConfigCache.getInstance().build(metaData, "");
     }
 
     @Override
-    public String rpcType() {
-        return RpcTypeEnum.HTTP.getName();
+    protected void invalidateReference(final String path) {
+        RpcxConfigCache.getInstance().invalidate(path);
     }
 }
