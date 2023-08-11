@@ -19,11 +19,10 @@ package org.apache.shenyu.plugin.wasm;
 
 import org.apache.shenyu.common.dto.RuleData;
 import org.apache.shenyu.common.dto.SelectorData;
+import org.apache.shenyu.plugin.api.ShenyuPlugin;
 import org.apache.shenyu.plugin.api.ShenyuPluginChain;
-import org.apache.shenyu.plugin.base.AbstractShenyuPlugin;
 import org.apache.shenyu.wasm.Instance;
 import org.springframework.web.server.ServerWebExchange;
-
 import reactor.core.publisher.Mono;
 
 import java.io.IOException;
@@ -32,7 +31,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public abstract class AbstractWasmPlugin extends AbstractFilteredShenyuWasmPlugin {
+public class AbstractWasmPlugin implements ShenyuPlugin {
 
     protected final Instance instance;
 
@@ -49,15 +48,14 @@ public abstract class AbstractWasmPlugin extends AbstractFilteredShenyuWasmPlugi
         Runtime.getRuntime().addShutdownHook(new Thread(this.instance::close));
     }
 
-    protected Mono<Void> doMethod1(final ServerWebExchange exchange, final ShenyuPluginChain chain, final SelectorData selector, final RuleData rule) {
+    @Override
+    public Mono<Void> execute(ServerWebExchange exchange, ShenyuPluginChain chain) {
         this.instance.exports.getFunction("method1");
-        this.doWasmInvoker(exchange, chain, selector, rule, "");
         return chain.execute(exchange);
     }
 
-    protected Mono<Void> doMethod2(final ServerWebExchange exchange, final ShenyuPluginChain chain, final SelectorData selector, final RuleData rule) {
-        this.instance.exports.getFunction("method2");
-        this.doWasmInvoker(exchange, chain, selector, rule, "");
-        return chain.execute(exchange);
+    @Override
+    public int getOrder() {
+        return 0;
     }
 }
