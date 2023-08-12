@@ -56,6 +56,6 @@ public class AbstractWasmPlugin implements ShenyuPlugin {
 
     @Override
     public int getOrder() {
-        return 0;
+        return 30;
     }
 }

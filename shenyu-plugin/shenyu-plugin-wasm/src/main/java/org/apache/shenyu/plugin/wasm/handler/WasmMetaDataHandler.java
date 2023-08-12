@@ -47,6 +47,7 @@ public class WasmMetaDataHandler implements MetaDataHandler {
             for (int i = 0; i < apply.length; i++) {
                 MetaData serviceConfig = (MetaData) apply[i];
                 MetaDataCache.getInstance().clean();
+                META_DATA.put(serviceConfig.getPath(), serviceConfig);
             }
         } else {
             if (!exist.getServiceName().equals(metaData.getServiceName()) || !exist.getRpcExt().equals(metaData.getRpcExt())) {
