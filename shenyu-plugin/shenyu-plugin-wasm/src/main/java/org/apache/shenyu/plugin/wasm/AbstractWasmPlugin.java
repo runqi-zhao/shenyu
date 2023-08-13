@@ -17,8 +17,6 @@
 
 package org.apache.shenyu.plugin.wasm;
 
-import org.apache.shenyu.common.dto.RuleData;
-import org.apache.shenyu.common.dto.SelectorData;
 import org.apache.shenyu.plugin.api.ShenyuPlugin;
 import org.apache.shenyu.plugin.api.ShenyuPluginChain;
 import org.apache.shenyu.wasm.Instance;
@@ -56,6 +54,6 @@ public class AbstractWasmPlugin implements ShenyuPlugin {
 
     @Override
     public int getOrder() {
-        return 30;
+        return 0;
     }
 }

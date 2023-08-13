@@ -41,7 +41,7 @@ public class WasmMetaDataHandler implements MetaDataHandler {
         MetaData exist = META_DATA.get(metaData.getPath());
         if (Objects.isNull(exist)) {
             // The first initialization
-            Function method1 = this.instance.getFunction("method1");
+            Function method1 = this.instance.getFunction("handle");
             //get refernce from wasm
             Object[] apply = method1.apply(metaData);
             for (int i = 0; i < apply.length; i++) {
