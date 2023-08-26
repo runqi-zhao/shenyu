@@ -78,6 +78,16 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <finalName>shenyu-integrated-test-k8s-ingress-websocket</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
     <profiles>
         <profile>
             <id>it</id>
@@ -87,7 +97,7 @@
                 <docker.image.tag.tagName>latest</docker.image.tag.tagName>
             </properties>
             <build>
-                <finalName>shenyu-integrated-test-k8s-ingress-websockett</finalName>
+                <finalName>shenyu-integrated-test-k8s-ingress-websocket</finalName>
                 <plugins>
                     <plugin>
                         <groupId>org.springframework.boot</groupId>
