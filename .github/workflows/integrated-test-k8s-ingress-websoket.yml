@@ -30,11 +30,11 @@ jobs:
         with:
           submodules: true
 
-#      - uses: dorny/paths-filter@v2
-#        id: filter
-#        with:
-#          filters: '.github/filters.yml'
-#          list-files: json
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: '.github/filters.yml'
+          list-files: json
 
       - name: Install Go
         uses: actions/setup-go@v3
