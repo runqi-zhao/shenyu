@@ -37,12 +37,15 @@ public class UploadControllerTest extends AbstractPluginDataInit {
 
     private static final String FILE_PATH = "1.bin";
 
+    private static final HttpHelper HTTP_HELPER = HttpHelper.INSTANCE;
+
     @BeforeAll
     public static void setup() throws IOException {
         Path pathOne = Paths.get(FILE_PATH);
         if (!Files.exists(pathOne)) {
             Files.createFile(pathOne);
         }
+        HTTP_HELPER.setGatewayEndpoint("http://localhost:30095");
         BufferedWriter bufferedWriterOne = Files.newBufferedWriter(pathOne);
         bufferedWriterOne.write("111");
         bufferedWriterOne.flush();
