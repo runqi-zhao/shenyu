@@ -47,9 +47,9 @@ spec:
           env:
             - name: shenyu.register.serverLists
               value: http://shenyu-admin:9095
-            - name: sync.websocket.url
+            - name: shenyu.sync.websocket.urls
               value: ws://shenyu-admin:9095/websocket
-            - name: sync.websocket.allowOrigin
+            - name: shenyu.sync.websocket.allowOrigin
               value: ws://shenyu-admin:9195
           ports:
             - containerPort: 8001

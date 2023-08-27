@@ -52,9 +52,9 @@ spec:
         env:
           - name: KUBECONFIG
             value: '/root/.kube/config'
-          - name: sync.websocket.url
+          - name: shenyu.sync.websocket.urls
             value: ws://shenyu-admin:9095/websocket
-          - name: sync.websocket.allowOrigin
+          - name: shenyu.sync.websocket.allowOrigin
             value: ws://shenyu-admin:9195
         imagePullPolicy: IfNotPresent
       serviceAccountName: shenyu-ingress-controller
