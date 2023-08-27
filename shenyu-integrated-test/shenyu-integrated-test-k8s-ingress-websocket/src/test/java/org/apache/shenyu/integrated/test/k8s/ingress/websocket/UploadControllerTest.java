@@ -60,7 +60,7 @@ public class UploadControllerTest extends AbstractPluginDataInit {
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("file", FILE_PATH, fileBodyOne)
                 .build();
-        final String response = HttpHelper.INSTANCE.postGateway("/ws-native/ws/upload", requestBody, String.class);
+        final String response = HttpHelper.INSTANCE.postGateway("/ws-annotation/ws/upload", requestBody, String.class);
         Assertions.assertEquals(response, "ok");
     }
 

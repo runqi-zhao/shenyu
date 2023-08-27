@@ -36,7 +36,7 @@ public class WebsocketPluginTest extends AbstractPluginDataInit {
 
     private static final Logger LOG = LoggerFactory.getLogger(WebsocketPluginTest.class);
 
-    private static final String WEBSOCKET_URI = "ws://localhost:30095//ws-annotation/myWebSocket?token=Jack";
+    private static final String WEBSOCKET_URI = "ws://localhost:30095/ws-annotation/myWebSocket?token=Jack";
 
     @Test
     public void testWebsocket() throws URISyntaxException, InterruptedException {
