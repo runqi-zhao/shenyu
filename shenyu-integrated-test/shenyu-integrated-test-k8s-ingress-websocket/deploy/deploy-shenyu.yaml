@@ -60,6 +60,24 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  name: shenyu-admin
+  labels:
+    app: shenyu-admin
+    all: shenyu-ingress-controller
+spec:
+  type: NodePort
+  selector:
+    app: shenyu-admin
+    all: shenyu-ingress-controller
+  ports:
+    - name: "9095"
+      port: 9095
+      targetPort: 9095
+      nodePort: 31095
+---
+apiVersion: v1
+kind: Service
+metadata:
   name: shenyu-ingress-controller
   namespace: shenyu-ingress
 spec:
