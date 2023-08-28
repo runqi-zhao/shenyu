@@ -20,12 +20,12 @@ metadata:
   name: shenyu-admin
   labels:
     app: shenyu-admin
-    all: shenyu-examples-http
+    all: shenyu-examples-spring-annotation-websocket
 spec:
   type: NodePort
   selector:
     app: shenyu-admin
-    all: shenyu-examples-http
+    all: shenyu-examples-spring-annotation-websocket
   ports:
   - name: "9095"
     port: 9095
@@ -39,12 +39,12 @@ metadata:
   name: shenyu-bootstrap
   labels:
     app: shenyu-bootstrap
-    all: shenyu-examples-http
+    all: shenyu-examples-spring-annotation-websocket
 spec:
   type: NodePort
   selector:
     app: shenyu-bootstrap
-    all: shenyu-examples-http
+    all: shenyu-examples-spring-annotation-websocket
   ports:
   - name: "9195"
     port: 9195
