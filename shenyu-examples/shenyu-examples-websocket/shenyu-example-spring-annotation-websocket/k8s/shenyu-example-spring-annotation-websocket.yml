@@ -49,6 +49,8 @@ spec:
               value: http://shenyu-admin:9095
             - name: shenyu.client.websocket.port
               value: '31190'
+#            - name: server.port
+#              value: '31190'
           ports:
             - containerPort: 8001
           imagePullPolicy: IfNotPresent
