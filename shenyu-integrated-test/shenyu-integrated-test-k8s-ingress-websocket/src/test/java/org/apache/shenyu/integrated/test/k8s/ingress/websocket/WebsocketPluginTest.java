@@ -36,7 +36,7 @@ public class WebsocketPluginTest extends AbstractPluginDataInit {
 
     private static final Logger LOG = LoggerFactory.getLogger(WebsocketPluginTest.class);
 
-    private static final String WEBSOCKET_URI = "ws://localhost:30095/ws-annotation/myWs";
+    private static final String WEBSOCKET_URI = "ws://localhost:30095/ws-annotation/myWs?token=Jack";
 
     @Test
     public void testWebsocket() throws URISyntaxException, InterruptedException {
@@ -64,7 +64,7 @@ public class WebsocketPluginTest extends AbstractPluginDataInit {
         webSocketClient.connectBlocking();
         webSocketClient.send(sendMessage);
         String receivedMessage = blockingQueue.poll(10, TimeUnit.SECONDS);
-        assertThat(receivedMessage, is("apache shenyu server send to message : -> " + sendMessage));
+        assertThat(receivedMessage, is("apache shenyu server send to Jack message : -> " + sendMessage));
     }
 
 }
