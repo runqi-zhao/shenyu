@@ -33,10 +33,10 @@ shenyu:
     local: true
   cross:
     enabled: true
-  sync:
-    websocket:
-      urls: ws://shenyu-admin:9095/websocket
-      allowOrigin: ws://localhost:9195
+#  sync:
+#    websocket:
+#      urls: ws://shenyu-admin:9095/websocket
+#      allowOrigin: ws://localhost:9195
   exclude:
     enabled: true
     paths:

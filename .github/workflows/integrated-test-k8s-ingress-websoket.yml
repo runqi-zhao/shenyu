@@ -80,7 +80,6 @@ jobs:
         run: |
           kind load docker-image "shenyu-example-spring-annotation-websocket:latest"
           kind load docker-image "apache/shenyu-integrated-test-k8s-ingress-websocket:latest"
-          kubectl apply -f ./shenyu-examples/shenyu-examples-websocket/shenyu-example-spring-annotation-websocket/k8s/shenyu-service.yml
           kubectl apply -f ./shenyu-examples/shenyu-examples-websocket/shenyu-example-spring-annotation-websocket/k8s/shenyu-example-spring-annotation-websocket.yml
           kubectl apply -f ./shenyu-integrated-test/shenyu-integrated-test-k8s-ingress-websocket/deploy/deploy-shenyu.yaml
           kubectl apply -f ./shenyu-examples/shenyu-examples-websocket/shenyu-example-spring-annotation-websocket/k8s/ingress.yml
