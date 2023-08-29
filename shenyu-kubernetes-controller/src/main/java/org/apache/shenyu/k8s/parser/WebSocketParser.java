@@ -31,10 +31,12 @@ import io.kubernetes.client.openapi.models.V1IngressServiceBackend;
 import io.kubernetes.client.openapi.models.V1IngressTLS;
 import io.kubernetes.client.openapi.models.V1Secret;
 import io.kubernetes.client.openapi.models.V1Service;
+import io.kubernetes.client.proto.Meta;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.shenyu.common.config.ssl.SslCrtAndKeyStream;
 import org.apache.shenyu.common.dto.ConditionData;
+import org.apache.shenyu.common.dto.MetaData;
 import org.apache.shenyu.common.dto.RuleData;
 import org.apache.shenyu.common.dto.SelectorData;
 import org.apache.shenyu.common.dto.convert.rule.impl.WebSocketRuleHandle;
@@ -71,7 +73,7 @@ public class WebSocketParser implements K8sResourceParser<V1Ingress> {
     /**
      * IngressParser Constructor.
      *
-     * @param serviceLister serviceLister
+     * @param serviceLister   serviceLister
      * @param endpointsLister endpointsLister
      */
     public WebSocketParser(final Lister<V1Service> serviceLister, final Lister<V1Endpoints> endpointsLister) {
@@ -82,7 +84,7 @@ public class WebSocketParser implements K8sResourceParser<V1Ingress> {
     /**
      * Parse ingress to ShenyuMemoryConfig.
      *
-     * @param ingress ingress resource
+     * @param ingress   ingress resource
      * @param coreV1Api coreV1Api
      * @return ShenyuMemoryConfig
      */
@@ -255,7 +257,16 @@ public class WebSocketParser implements K8sResourceParser<V1Ingress> {
                             .loged(false)
                             .enabled(true).build();
 
-                    res.add(new IngressConfiguration(selectorData, ruleData, null));
+                    MetaData metaData = MetaData.builder()
+                            .appName("ws-annotation")
+                            .contextPath("/ws-annotation")
+                            .path("/ws-annotation/")
+                            .rpcType("websocket")
+                            .serviceName("org.apache.shenyu.examples.websocket.ws.WsServerEndpoint")
+                            .enabled(true)
+                            .build();
+
+                    res.add(new IngressConfiguration(selectorData, ruleData, metaData));
                 }
             }
         }
