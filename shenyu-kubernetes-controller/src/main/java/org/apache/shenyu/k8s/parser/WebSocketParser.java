@@ -256,15 +256,7 @@ public class WebSocketParser implements K8sResourceParser<V1Ingress> {
                             .loged(false)
                             .enabled(true).build();
 
-                    MetaData metaData = MetaData.builder()
-                            .appName("ws-annotation")
-                            .contextPath("/ws-annotation")
-                            .path("/ws-annotation/")
-                            .rpcType("websocket")
-                            .serviceName("org.apache.shenyu.examples.websocket.ws.WsServerEndpoint")
-                            .enabled(true)
-                            .build();
-
+                    MetaData metaData = parseMetaData();
                     res.add(new IngressConfiguration(selectorData, ruleData, metaData));
                 }
             }
@@ -281,6 +273,17 @@ public class WebSocketParser implements K8sResourceParser<V1Ingress> {
             }
         }
         return null;
+    }
+
+    private MetaData parseMetaData() {
+        return MetaData.builder()
+                .appName("ws-annotation")
+                .contextPath("/ws-annotation")
+                .path("/ws-annotation/")
+                .rpcType("websocket")
+                .serviceName("org.apache.shenyu.examples.websocket.ws.WsServerEndpoint")
+                .enabled(true)
+                .build();
     }
 
     private List<WebSocketUpstream> parseUpstream(final V1IngressBackend backend, final String namespace) {
