@@ -21,7 +21,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class WebsocketIntegratedBootstrap {
+public class WebsocketIngressIntegratedBootstrap {
 
     /**
      * main mathod of app.
@@ -29,6 +29,6 @@ public class WebsocketIntegratedBootstrap {
      * @param args args
      */
     public static void main(final String[] args) {
-        SpringApplication.run(WebsocketIntegratedBootstrap.class);
+        SpringApplication.run(WebsocketIngressIntegratedBootstrap.class);
     }
 }

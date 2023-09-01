@@ -30,6 +30,6 @@ spec:
               service:
                 name: shenyu-example-spring-annotation-websocket
                 port:
-                  number: 31190
+                  number: 8001
             path: /ws-annotation
             pathType: Prefix

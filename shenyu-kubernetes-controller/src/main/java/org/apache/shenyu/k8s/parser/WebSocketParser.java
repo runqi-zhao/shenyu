@@ -279,7 +279,7 @@ public class WebSocketParser implements K8sResourceParser<V1Ingress> {
         return MetaData.builder()
                 .appName("ws-annotation")
                 .contextPath("/ws-annotation")
-                .path("/ws-annotation/")
+                .path("/ws-annotation/myWs")
                 .rpcType("websocket")
                 .serviceName("org.apache.shenyu.examples.websocket.ws.WsServerEndpoint")
                 .enabled(true)
