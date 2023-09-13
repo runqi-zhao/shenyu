@@ -18,8 +18,8 @@ name: k8s-examples-http
 on:
   pull_request:
   push:
-    branches:
-      - master
+#    branches:
+#      - master
 
 jobs:
   k8s-examples-http:
