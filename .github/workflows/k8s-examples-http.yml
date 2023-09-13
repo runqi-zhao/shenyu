@@ -24,7 +24,7 @@ on:
 jobs:
   k8s-examples-http:
     runs-on: ubuntu-latest
-    if: (github.repository == 'apache/shenyu')
+    if: (github.repository == 'runqi-zhao/shenyu')
     steps:
       -
         uses: actions/checkout@v3
